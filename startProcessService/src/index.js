@@ -6,6 +6,10 @@ const config = require('../.config.json');
 // Get all util function
 const { logger } = require('../utils');
 
+
+// Get kafka utils
+const kafka = require('../kafka')
+
 // set server params.
 const { hostname } = config.server;
 const port = process.env.PORT || config.server.port;
@@ -56,8 +60,30 @@ app.listen(port, () => {
     logger.info(`Server ${hostname} start on port: ${port}`);
 });
 
+/* ********************************** */
+/*   Send message to Kafka topic API  */
+/* ********************************** */
 
+myRouter.route('/api/v1/placerequest').post(async (req, res) => {
+    try {
+        var data = await kafka.placerequest('msg');
+        res.setHeader('Content-Type', 'application/json');
+        res.send(
+            JSON.stringify(data)
+        );
+    } catch (error) {
+        logger.info(`Sending message to kafka topic error ${error}`);
+        res.status(500);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(
+            JSON.stringify({
+                error: {
+                    message: error,
+                },
+            })
+        );
+    }
 
-myRouter.route('/api/v1/startProcess').post(async (req, res) => {});
+});
 
 

@@ -6,8 +6,8 @@ require('winston-daily-rotate-file');
 /*           Config logger            */
 /**************************************/
 var transport = new transports.DailyRotateFile({
-  filename: 'log/application-%DATE%.log',
-  datePattern: 'YYYY-MM-DD-HH',
+  filename: 'log/%DATE%.log',
+  datePattern: 'YYYY-MM-DD',
   zippedArchive: true,
   maxSize: '1M',
   maxFiles: '14d',
