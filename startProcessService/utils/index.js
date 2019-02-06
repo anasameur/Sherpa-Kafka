@@ -22,7 +22,7 @@ const myFormat = printf((info) => {
 });
 
 const logger = createLogger({
-  level: 'info',
+  level: process.env.DEBUG_LVL || 'info',
   format: combine(label({ label: 'right meow!' }), timestamp(), myFormat),
   transports: [
     //

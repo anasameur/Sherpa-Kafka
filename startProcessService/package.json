@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "debug": "set DEBUG_LVL=debug& node src/index.js ",
     "serve": "node src/index.js"
   },
   "author": "",

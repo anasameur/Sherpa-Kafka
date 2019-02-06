@@ -37,7 +37,7 @@ producer.on('ready', function () {
     logger.info(`Kafka producer ready`);
 });
 producer.on('error', function (error) {
-    logger.error(`kafka producer error: ${err}`);
+    logger.error(`kafka producer error: ${error}`);
 })
 
 /**************************************/
