@@ -1,0 +1,9 @@
+{
+  "server": {
+    "hostname": "localhost",
+    "port": 3007,
+    "sslport": 8453,
+    "framework": "express",
+    "environment": "NodeJs"
+  }
+}
